@@ -26,8 +26,10 @@ public class HotelTest {
         em.getTransaction().commit();
 
         Query query = em.createQuery("from Hotel where id = :id ");
-        query.setParameter("id", "1");
-        List list = query.getResultList();
-        list.toString();
+        query.setParameter("id", 1L);
+        Hotel hotelFromDB = (Hotel)query.getSingleResult();
+        System.out.println("Hotel name is: " + hotelFromDB.getName());
+        System.out.println("Hotel city is: " + hotelFromDB.getLocation().getCity());
+        System.out.println("Hotel country is: " + hotelFromDB.getLocation().getCountry());
     }
 }
