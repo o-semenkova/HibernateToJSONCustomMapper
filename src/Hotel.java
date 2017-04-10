@@ -21,6 +21,10 @@ public class Hotel extends BaseEntity{
     @Column(name = "name")
     private String name;
 
+    @Type(type = "jsonb")
+    @Column(name = "menu",columnDefinition = "json")
+    private Menu menu;
+
     public long getId() {
         return id;
     }
@@ -45,12 +49,21 @@ public class Hotel extends BaseEntity{
         this.name = name;
     }
 
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
     @Override
     public String toString() {
         return "Hotel{" +
                 "id=" + id +
                 ", location=" + location +
                 ", name='" + name + '\'' +
+                ", menu=" + menu +
                 '}';
     }
 }
